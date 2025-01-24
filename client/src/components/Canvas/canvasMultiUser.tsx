@@ -8,14 +8,14 @@ import socket from "@/services/socket";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation"; 
-import { FiX, FiMenu, } from "react-icons/fi";
+import { FiMenu, } from "react-icons/fi";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateRight, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import { faFileUpload, faCloudDownloadAlt, faPencilAlt, faTimes, faSquare, faCircle, faSave, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { useMutation, useQuery } from "convex/react";
+import { useMutation } from "convex/react";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
-import { api } from "../../../convex/_generated/api";
+// import { api } from "../../../convex/_generated/api";
 import { getCanvasImages } from '../../../convex/getCanvasImages'
 
 export default function Canvas({room} : ChatIconProps) {
@@ -25,7 +25,7 @@ export default function Canvas({room} : ChatIconProps) {
   const [selectedShape, setSelectedShape] = useState<"freehand" | "rectangle" | "circle" | "line">("freehand");
   const [colorPickerOpen, setColorPickerOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar state
-  const [savedImage, setSavedImage] = useState<string | null>(null);
+  // const [setSavedImage] = useState<string | null>(null);
   const router = useRouter(); 
 
   const { user } = useKindeBrowserClient();
@@ -56,10 +56,10 @@ export default function Canvas({room} : ChatIconProps) {
     }
   };
 
-  const getImages = useQuery(api.getCanvasImages.getCanvasImages); //use this
-  // const { data: images, error, isLoading } = useQuery("api.getCanvasImages.getCanvasImages", {
-  //   userIdentifier: user?.email ?? "", // Pass a fallback or handle null user
-  // });
+  // const getImages = useQuery(api.getCanvasImages.getCanvasImages); //use this
+  // // const { data: images, error, isLoading } = useQuery("api.getCanvasImages.getCanvasImages", {
+  // //   userIdentifier: user?.email ?? "", // Pass a fallback or handle null user
+  // // });
   const handleFetchCanvasImages = async () => {    
     // Check if user identifier is available
     if (!user?.email) {

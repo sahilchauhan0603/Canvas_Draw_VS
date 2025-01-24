@@ -64,7 +64,7 @@ export default function RoomExitPage() {
       {/* Main Content */}
       <div className="z-10 space-y-8 text-center">
         <h1 className="text-4xl font-extrabold text-yellow-300 drop-shadow-lg">
-          You've Left the Room
+          You&apos;ve Left the Room
         </h1>
         <p className="text-lg font-medium">
           You can rejoin the room within{' '}

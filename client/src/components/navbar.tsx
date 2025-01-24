@@ -6,14 +6,21 @@ import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useEffect, useState } from 'react';
 import { FaUserCircle } from "react-icons/fa"; // Profile Icon
 
+// Define an interface for the user
+interface AuthenticatedUser {
+  picture?: string; // Optional in case the user doesn't have a picture
+  given_name?: string;
+  email?: string;
+}
+
 export default function Navbar() {
   // Kinde authentication client
-  const { user, getUser, isAuthenticated } = useKindeBrowserClient();
-  const [authenticatedUser, setAuthenticatedUser] = useState<any>(null);
+  const { getUser, isAuthenticated } = useKindeBrowserClient();
+  const [authenticatedUser, setAuthenticatedUser] = useState<AuthenticatedUser | null>(null);
 
   useEffect(() => {
     if (isAuthenticated) {
-      const currentUser = getUser();
+      const currentUser = getUser() as AuthenticatedUser; // Type assertion for user data
       setAuthenticatedUser(currentUser); // Set the authenticated user data
     }
   }, [isAuthenticated, getUser]);
@@ -62,9 +69,9 @@ export default function Navbar() {
               {/* View Profile Button */}
               <Link href="/profile" className="flex items-center space-x-2 text-gray-200 hover:text-blue-400">
                 {/* Profile Image */}
-                {user?.picture ? (
+                {authenticatedUser?.picture ? (
                   <img
-                    src={user.picture}
+                    src={authenticatedUser.picture}
                     alt="Profile"
                     className="w-8 h-8 rounded-full object-cover"
                   />
@@ -102,4 +109,3 @@ export default function Navbar() {
     </header>
   );
 }
-

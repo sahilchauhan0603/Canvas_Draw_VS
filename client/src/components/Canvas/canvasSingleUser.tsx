@@ -7,8 +7,8 @@ import { drawLine, drawCircle, drawRectangle } from "@/utils/drawShapes";
 import socket from "@/services/socket";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/navigation"; 
-import { FiX, FiMenu, } from "react-icons/fi";
+// import { useRouter } from "next/navigation"; 
+import { FiMenu, } from "react-icons/fi";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { faFileUpload, faCloudDownloadAlt, faPencilAlt, faTimes, faSquare, faCircle, faSave, faShareAlt } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +16,7 @@ import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/
 import { useMutation, useQuery } from "convex/react";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { api } from "../../../convex/_generated/api";
-import { getCanvasImages } from '../../../convex/getCanvasImages'
+// import { getCanvasImages } from '../../../convex/getCanvasImages'
 
 export default function Canvas({params} : PostPageProps) {
   const [color, setColor] = useState<string>('#FFFFFF');
@@ -26,7 +26,7 @@ export default function Canvas({params} : PostPageProps) {
   const [colorPickerOpen, setColorPickerOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar state
   const [savedImage, setSavedImage] = useState<string | null>(null);
-  const router = useRouter(); 
+  // const router = useRouter(); 
 
   const { user } = useKindeBrowserClient();
 
@@ -56,7 +56,7 @@ export default function Canvas({params} : PostPageProps) {
   }
 };
 
-  const getImages = useQuery(api.getCanvasImages.getCanvasImages); //use this
+  const getCanvasImages = useQuery(api.getCanvasImages.getCanvasImages); //use this
   // const { data: images, error, isLoading } = useQuery("api.getCanvasImages.getCanvasImages", {
   //   userIdentifier: user?.email ?? "", // Pass a fallback or handle null user
   // });

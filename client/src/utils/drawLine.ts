@@ -3,7 +3,7 @@ export const drawLine = ({ctx , currentPoint , prevPoint , color} : DrawLineprop
     const lineColor = color
     const lineWidth = 5;
 
-    let startPoint = prevPoint ?? currentPoint 
+    const startPoint = prevPoint ?? currentPoint 
     ctx.beginPath()
     ctx.lineWidth = lineWidth
     ctx.strokeStyle = lineColor

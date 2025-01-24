@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
 
-const ProfileIcons = () => {
+interface AuthenticatedUser {
+  picture: string;
+  given_name: string;
+}
+
+const ProfileIcons: React.FC = () => {
   const { getUser, isAuthenticated } = useKindeBrowserClient();
-  const [authenticatedUser, setAuthenticatedUser] = useState<any>(null);
+  const [authenticatedUser, setAuthenticatedUser] = useState<AuthenticatedUser | null>(null);
 
   useEffect(() => {
     if (isAuthenticated) {
-      const currentUser = getUser();
+      const currentUser = getUser() as AuthenticatedUser; // Cast the result to the defined type
       setAuthenticatedUser(currentUser); // Set the authenticated user data
     }
   }, [isAuthenticated, getUser]);
