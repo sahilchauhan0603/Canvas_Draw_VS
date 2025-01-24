@@ -88,8 +88,7 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile Menu */}
-        <button className="lg:hidden">
+        <button type="button" className="lg:hidden" aria-label="Toggle mobile menu">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -105,6 +104,7 @@ export default function Navbar() {
             />
           </svg>
         </button>
+
       </div>
     </header>
   );

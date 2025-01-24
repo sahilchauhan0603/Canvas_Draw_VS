@@ -13,9 +13,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { faFileUpload, faCloudDownloadAlt, faPencilAlt, faTimes, faSquare, faCircle, faSave, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { useMutation, useQuery } from "convex/react";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
-import { api } from "../../../convex/_generated/api";
+// import { useMutation, useQuery } from "convex/react";
+// import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+// import { api } from "../../../convex/_generated/api";
 // import { getCanvasImages } from '../../../convex/getCanvasImages'
 
 export default function Canvas({params} : PostPageProps) {
@@ -25,67 +25,68 @@ export default function Canvas({params} : PostPageProps) {
   const [selectedShape, setSelectedShape] = useState<"freehand" | "rectangle" | "circle" | "line">("freehand");
   const [colorPickerOpen, setColorPickerOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar state
-  const [savedImage, setSavedImage] = useState<string | null>(null);
+  // const [savedImage, setSavedImage] = useState<string | null>(null);
+  const [savedImage] = useState<string | null>(null);
   // const router = useRouter(); 
 
-  const { user } = useKindeBrowserClient();
+  // const { user } = useKindeBrowserClient();
 
-  // const canvasRef = useRef(null);
-  const saveCanvas = useMutation("saveCanvas");
-  const handleSaveCanvas = async () => {
-  if (!canvasRef.current) return;
+//   // const canvasRef = useRef(null);
+//   const saveCanvas = useMutation("saveCanvas");
+//   const handleSaveCanvas = async () => {
+//   if (!canvasRef.current) return;
 
-  const canvas = canvasRef.current;
-  const imageData = canvas.toDataURL("image/png");
+//   const canvas = canvasRef.current;
+//   const imageData = canvas.toDataURL("image/png");
 
-  // Check if user identifier is available
-  if (!user?.email) {
-    alert("User email is not available. Please log in to save the canvas.");
-    return;
-  }
+//   // Check if user identifier is available
+//   if (!user?.email) {
+//     alert("User email is not available. Please log in to save the canvas.");
+//     return;
+//   }
 
-  try {
-    await saveCanvas({
-      userIdentifier: user.email, // Use dynamic identifier or fallback if needed
-      imageData,
-    });
-    alert("Canvas saved successfully!");
-  } catch (error) {
-    console.error("Failed to save canvas:", error);
-    alert("Failed to save canvas. Please try again.");
-  }
-};
+//   try {
+//     await saveCanvas({
+//       userIdentifier: user.email, // Use dynamic identifier or fallback if needed
+//       imageData,
+//     });
+//     alert("Canvas saved successfully!");
+//   } catch (error) {
+//     console.error("Failed to save canvas:", error);
+//     alert("Failed to save canvas. Please try again.");
+//   }
+// };
 
-  const getCanvasImages = useQuery(api.getCanvasImages.getCanvasImages); //use this
-  // const { data: images, error, isLoading } = useQuery("api.getCanvasImages.getCanvasImages", {
-  //   userIdentifier: user?.email ?? "", // Pass a fallback or handle null user
-  // });
-  const handleFetchCanvasImages = async () => {
+//   const getCanvasImages = useQuery(api.getCanvasImages.getCanvasImages); //use this
+//   // const { data: images, error, isLoading } = useQuery("api.getCanvasImages.getCanvasImages", {
+//   //   userIdentifier: user?.email ?? "", // Pass a fallback or handle null user
+//   // });
+//   const handleFetchCanvasImages = async () => {
     
-    // Check if user identifier is available
-  if (!user?.email) {
-    alert("User email is not available. Please log in to fetch your previous work.");
-    return;
-  }
-    try {
-      const userIdentifier = user?.email;
-      if (!userIdentifier) {
-        alert("User is not logged in!");
-        return;
-      }
+//     // Check if user identifier is available
+//   if (!user?.email) {
+//     alert("User email is not available. Please log in to fetch your previous work.");
+//     return;
+//   }
+//     try {
+//       const userIdentifier = user?.email;
+//       if (!userIdentifier) {
+//         alert("User is not logged in!");
+//         return;
+//       }
 
-      const images = await getCanvasImages({ userIdentifier });
-      console.log("Fetched Images:", images);
+//       const images = await getCanvasImages({ userIdentifier });
+//       console.log("Fetched Images:", images);
 
-      if (images && images.length > 0) {
-        setSavedImage(images[0].imageData);
-      } else {
-        alert("No images found for this user!");
-      }
-    } catch (error) {
-      console.error("Failed to fetch canvas images:", error);
-    }
-  };
+//       if (images && images.length > 0) {
+//         setSavedImage(images[0].imageData);
+//       } else {
+//         alert("No images found for this user!");
+//       }
+//     } catch (error) {
+//       console.error("Failed to fetch canvas images:", error);
+//     }
+//   };
 
   const handleShareCanvas = () => {
     if (!canvasRef.current) return;
@@ -309,7 +310,7 @@ export default function Canvas({params} : PostPageProps) {
 
         {/* <canvas ref={canvasRef} /> */}
         <button
-          onClick={handleSaveCanvas}
+          // onClick={handleSaveCanvas}
           className="flex items-center space-x-2 text-gray-400 hover:text-white w-full rounded-lg hover:bg-gray-700 "
         >
           <FontAwesomeIcon icon={faSave} />
@@ -318,7 +319,7 @@ export default function Canvas({params} : PostPageProps) {
 
         {/* Fetch Saved Image Button */}
         <button
-          onClick={handleFetchCanvasImages}
+          // onClick={handleFetchCanvasImages}
           className="flex items-center space-x-2 text-gray-400 hover:text-white w-full rounded-lg hover:bg-gray-700"
         >
           <FontAwesomeIcon icon={faCloudDownloadAlt} />

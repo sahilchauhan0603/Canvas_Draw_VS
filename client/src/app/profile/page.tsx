@@ -17,8 +17,14 @@ export default function Profile() {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
 
+
   if (!isAuthenticated) {
     return <p className="text-center text-xl mt-10 font-semibold text-gray-600">Please log in to view your profile.</p>;
+  }
+  
+  if (!user) {
+    console.error('User is not defined!');
+    return; // Exit the function or handle the error
   }
 
   const handleSendInvite = async () => {

@@ -18,7 +18,7 @@ type DrawLineProp = {
 }
 
 interface PostPageProps {
-  params: {
+  params?: {
     currRoom?: string;
   };
 }
@@ -43,7 +43,7 @@ type DrawShapeProps = {
   endPoint : Point,
 }
 interface ChatIconProps {
-  name: string; 
+  name?: string; 
   room : string;
 }
 interface CanvasIconProps {
