@@ -15,7 +15,7 @@ app.prepare().then(() => {
 
   const io = new Server(server, {
     cors: {
-      origin: ['http://localhost:3000', 'https://drawing-app-git-main-sahil-chauhans-projects-cf9884c2.vercel.app'], // Ensure this is correct
+      origin: ['http://localhost:3000', 'https://drawing-app-git-main-sahil-chauhans-projects-cf9884c2.vercel.app', 'https://drawing-app-lilac.vercel.app/'], // Ensure this is correct
       methods: ['GET', 'POST'],
     },
   });
