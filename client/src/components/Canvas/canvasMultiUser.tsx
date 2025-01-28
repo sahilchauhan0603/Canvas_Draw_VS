@@ -299,7 +299,7 @@ export default function Canvas({room} : ChatIconProps) {
                 <FontAwesomeIcon icon={faCloudDownloadAlt} />
                 <span>Export</span>
               </button>
-              <button onClick={handleSaveCanvas} className="flex items-center space-x-2 text-gray-400 hover:text-white w-full rounded-lg hover:bg-gray-700">
+              <button className="flex items-center space-x-2 text-gray-400 hover:text-white w-full rounded-lg hover:bg-gray-700">
                 <FontAwesomeIcon icon={faSave} />
                 <span>Save</span>
               </button>

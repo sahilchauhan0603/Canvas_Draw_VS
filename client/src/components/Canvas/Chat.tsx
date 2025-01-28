@@ -19,7 +19,7 @@ export default function Chat({ name , room }: ChatIconProps) {
     }
 
     const newMessage = {
-      sender: name, 
+      sender: name as string, 
       text: messageText.trim(),
     };
 
