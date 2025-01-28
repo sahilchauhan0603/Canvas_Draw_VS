@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const socket = io('https://drawing-app-lilac.vercel.app', {
+const socket = io('/', {
   transports: ['websocket', 'polling'],
 });
 
