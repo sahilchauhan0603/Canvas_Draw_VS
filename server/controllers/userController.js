@@ -3,7 +3,7 @@ import ErrorHandler from "../middlewares/error.js";
 import { User } from "../models/userSchema.js";
 import { sendToken } from "../utils/jwtToken.js";
 
-import { sendEmail } from "../utils/sendEMail.js";
+import { sendEmail } from "../utils/sendEmail.js";
 
 
 // export const register = catchAsyncErrors(async (req, res, next) => {
